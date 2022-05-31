@@ -1,41 +1,33 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Unary {
+class Binary{
     private:
     int a,b,c;
 
     public:
-    Unary (int x, int y , int z){
-        a = x ; b = y ; c = z;
+    void read(int x, int y, int z){
+        a =x ; b =y; c =z;
     }
-
     void display(){
-        cout << a << " \n" << b << "\n" << c << "\n";
+        cout << a << " "<< b << " " << c;
     }
 
-    void operator ++ (){
-        a++;
-        b++;
-        c++;
-    }
+    Binary operator + (Binary b2){
+        Binary b3;
 
-    friend void operator ++ (Unary &obj){
-        obj.a++;
-        obj.b++;
-        obj.c++;
+        b3.a= a+b2.a;
+        b3.b= b+b2.b;
+        b3.c= c+b2.c;
+        return b3;
     }
-
 };
 
-int main (){
-    Unary obj (10,20,30);
-    cout << "before increment \n";
-    obj.display();
-    cout << "after\n";
-    obj.operator++();
-    obj.display();
-
-
-
+int main(){
+    Binary b1, b2, b3;
+    b1.read(1,2,3);
+    b2.read (4,5,6);
+    b3 = b1.operator+(b2);
+    b3.display();
+    return 0;
 }
